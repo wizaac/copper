@@ -252,7 +252,7 @@ module guess_generator(input clk, rst, input [3:0] switches, output [15:0] guess
 	reg [15:0] cntr;
 	reg [3:0] w,x,y,z;
 
-	always@(posedge clk or posedge rst) begin
+	always@(posedge clk ) begin
 
 		if(rst)
 			cntr = '0;
@@ -273,50 +273,7 @@ module guess_generator(input clk, rst, input [3:0] switches, output [15:0] guess
 
 	assign guess_o = {w,x,y,z};
 endmodule
-
-module seven_segment_driver(
-		input clk, rst, 
-		input [7:0] number,
-		output [6:0] symbol_o
-	);
-
-	reg [6:0] symbol;
-
-	localparam ZERO 	= 7'b0000000;
-	localparam ONE		= 7'b0000000; 
-	localparam TWO		= 7'b0000000; 
-	localparam THREE	= 7'b0000000; 
-	localparam FOUR	= 7'b0000000; 
-	localparam FIVE	= 7'b0000000; 
-	localparam SIX		= 7'b0000000; 
-	localparam SEVEN	= 7'b0000000; 
-	localparam EIGHT	= 7'b0000000; 
-	localparam NINE	= 7'b0000000; 
-	localparam X_		= 7'b0000000; 
-
-	always@(posedge clk or posedge rst) begin
-		if(rst) begin
-			symbol = ZERO;
-		end else begin	
-			case(number)
-				8'h00: symbol = ZERO;
-				8'h01: symbol = ONE;
-				8'h02: symbol = TWO;
-				8'h03: symbol = THREE;
-				8'h04: symbol = FOUR;
-				8'h05: symbol = FIVE;
-				8'h06: symbol = SIX;
-				8'h07: symbol = SEVEN;
-				8'h08: symbol = EIGHT;
-				8'h09: symbol = NINE;
-				default: symbol = X_;
-			endcase	
-		end
-	end
-
-	assign symbol_o = symbol;
-
-endmodule
+`include "seven_seg_driver.v"
 
 module mastermind_top(
 		input [3:0] SW, 
