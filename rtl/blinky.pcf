@@ -4,14 +4,14 @@ set_io clk P7
 set_io rst P8
 
 # Onboard LEDs, bottom to top
-set_io LED[7] J11
-set_io LED[6] K11
-set_io LED[5] K12
+set_io LED[7] K12
+set_io LED[6] L14 
+set_io LED[5] J12
 set_io LED[4] K14
-set_io LED[3] L12
-set_io LED[2] L14
-set_io LED[1] M12
-set_io LED[0] N14
+set_io LED[3] H12
+set_io LED[2] G12
+set_io LED[1] K11
+set_io LED[0] J11
 
 ## Alchitry IO
 
